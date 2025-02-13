@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/bespin-studios/byteshard-tree/compare/v2.0.0...v2.0.1) (2025-02-13)
+
+
+### Bug Fixes
+
+* make parameter implicitly nullable ([dbf2ef8](https://github.com/bespin-studios/byteshard-tree/commit/dbf2ef84d00f8eaaaa397c8c15daacfce0f99148))
+* remove cell property access which hasn't existed in ages ([25d01f7](https://github.com/bespin-studios/byteshard-tree/commit/25d01f764b74429f56482870d1be5307d29d0501))
+* update phpstan ([3fd7bca](https://github.com/bespin-studios/byteshard-tree/commit/3fd7bca221467f19006b809c536058444c5ba58a))
+
 # [2.0.0](https://github.com/byteshard/tree/compare/v1.0.0...v2.0.0) (2024-07-08)
 
 
