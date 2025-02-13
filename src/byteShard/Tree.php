@@ -238,11 +238,7 @@ abstract class Tree extends CellContent implements TreeInterface
             $parameters['beforeDataLoading']['setStdImages'] = $this->images;
         }
         if ($this->saveOpenState === true) {
-            if (isset($this->cell) && isset($this->cell->content['relatedID'], $this->cell->content['relatedID']['static']) && $this->cell->content['relatedID']['static'] !== null) {
-                $cookieName = get_class($this).'_'.$this->cell->content['relatedID']['static'];
-            } else {
-                $cookieName = get_class($this);
-            }
+            $cookieName = get_class($this);
             $cookieExpirationDate                                    = 'expires='.(new DateTime('now'))->modify('+10 years')->format('D, d M Y').' 23:00:00 GMT';
             $parameters['afterDataLoading']['enableOpenStateSaving'] = [$cookieName, $cookieExpirationDate.'; SameSite=Lax'];
         }
