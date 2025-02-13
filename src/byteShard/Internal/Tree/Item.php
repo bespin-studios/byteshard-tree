@@ -25,7 +25,7 @@ class Item
      * @param Attributes  $attributes
      * @param string|null $parentId
      */
-    public function __construct(int $level, Attributes $attributes, string $parentId = null) {
+    public function __construct(int $level, Attributes $attributes, ?string $parentId = null) {
         $this->level = $level;
         $this->attributes = $attributes;
         $this->parentId = $parentId;
