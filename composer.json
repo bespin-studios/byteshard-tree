@@ -14,7 +14,7 @@
     }
   },
   "require-dev": {
-    "phpstan/phpstan": "^1.9"
+    "phpstan/phpstan": "^1.12.18"
   },
   "require": {
     "php": "^8.1",
