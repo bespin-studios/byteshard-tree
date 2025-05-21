@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/bespin-studios/byteshard-tree/compare/v2.0.1...v2.0.2) (2025-05-21)
+
+
+### Bug Fixes
+
+* pipeline and php 8.4 warnings ([9930f48](https://github.com/bespin-studios/byteshard-tree/commit/9930f487ae19543a529f706dce478a287264f46b))
+
 ## [2.0.1](https://github.com/bespin-studios/byteshard-tree/compare/v2.0.0...v2.0.1) (2025-02-13)
 
 
