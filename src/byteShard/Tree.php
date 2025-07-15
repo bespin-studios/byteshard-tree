@@ -6,9 +6,13 @@
 
 namespace byteShard;
 
+use byteShard\Enum\ContentType;
 use byteShard\ID\RowID;
 use byteShard\Internal\CellContent;
 use byteShard\Internal\SimpleXML;
+use byteShard\Internal\Struct\ClientCell;
+use byteShard\Internal\Struct\ClientCellProperties;
+use byteShard\Internal\Struct\ContentComponent;
 use byteShard\Internal\Tree\Attributes;
 use byteShard\Internal\Tree\Item;
 use byteShard\Tree\Node;
@@ -39,31 +43,31 @@ abstract class Tree extends CellContent implements TreeInterface
 
     /**
      * TODO: early session close
-     * @param array $content
-     * @return array
      * @throws Exception
      * @internal
      */
-    public function getCellContent(array $content = []): array
+    public function getCellContent(): ?ClientCell
     {
-        $parentContent = parent::getCellContent($content);
-        $nonce         = $this->cell->getNonce();
+        $components = parent::getComponents();
+        $nonce      = $this->cell->getNonce();
         $this->defineCellContent();
         $this->defineDataBinding();
         $this->queryData();
         $this->sortArray();
         $this->buildTree($nonce);
         $this->selectLastSelectedRow();
-        return array_merge(
-            $parentContent,
-            array_filter(['cellHeader' => $this->getCellHeader()]),
-            [
-                'content'           => $this->getXML(),
-                'contentType'       => $this->cellContentType,
-                'contentEvents'     => $this->getCellEvents(),
-                'contentParameters' => $this->getCellParameters($nonce),
-                'contentFormat'     => $this->cell->getContentFormat()
-            ]
+        $components[] = new ContentComponent(
+            type   : ContentType::DhtmlxTree,
+            content: $this->getXML(),
+            events : $this->getCellEvents(),
+            setup  : $this->getSetupParameters($nonce),
+            update : $this->getUpdateParameters()
+        );
+        return new ClientCell(
+            new ClientCellProperties(
+                nonce: $nonce,
+            ),
+            ...$components
         );
     }
 
@@ -225,7 +229,7 @@ abstract class Tree extends CellContent implements TreeInterface
      * @param string $nonce
      * @return array
      */
-    private function getCellParameters(string $nonce): array
+    private function getSetupParameters(string $nonce): array
     {
         $parameters = [];
         if ($this->smartRendering === true) {
@@ -237,12 +241,18 @@ abstract class Tree extends CellContent implements TreeInterface
         if (!empty($this->images)) {
             $parameters['beforeDataLoading']['setStdImages'] = $this->images;
         }
-        if ($this->saveOpenState === true) {
-            $cookieName = get_class($this);
-            $cookieExpirationDate                                    = 'expires='.(new DateTime('now'))->modify('+10 years')->format('D, d M Y').' 23:00:00 GMT';
-            $parameters['afterDataLoading']['enableOpenStateSaving'] = [$cookieName, $cookieExpirationDate.'; SameSite=Lax'];
-        }
         $parameters['cn'] = base64_encode($nonce);
+        return $parameters;
+    }
+
+    private function getUpdateParameters(): array
+    {
+        $parameters = [];
+        if ($this->saveOpenState === true) {
+            $cookieName                          = get_class($this);
+            $cookieExpirationDate                = 'expires='.(new DateTime('now'))->modify('+10 years')->format('D, d M Y').' 23:00:00 GMT';
+            $parameters['enableOpenStateSaving'] = [$cookieName, $cookieExpirationDate.'; SameSite=Lax'];
+        }
         return $parameters;
     }
 
