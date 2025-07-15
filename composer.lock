@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b95dbd3eca221062d31880052d226558",
+    "content-hash": "6c604dd0b0ed5e46640f618a6ec91f06",
     "packages": [
         {
             "name": "byteshard/auth",
@@ -2536,7 +2536,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2|^8.0"
+                "php": "^7.4|^8.0"
             },
             "conflict": {
                 "phpstan/phpstan-shim": "*"
