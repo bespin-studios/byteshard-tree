@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/bespin-studios/byteshard-tree/compare/v2.1.0...v2.1.1) (2025-07-21)
+
+
+### Bug Fixes
+
+* tree events were in the old format ([555c299](https://github.com/bespin-studios/byteshard-tree/commit/555c2992c83a7bfbeac2019eabd062da4dcb3d80))
+
 # [2.1.0](https://github.com/bespin-studios/byteshard-tree/compare/v2.0.2...v2.1.0) (2025-07-21)
 
 
