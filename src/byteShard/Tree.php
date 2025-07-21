@@ -11,6 +11,7 @@ use byteShard\ID\RowID;
 use byteShard\Internal\CellContent;
 use byteShard\Internal\SimpleXML;
 use byteShard\Internal\Struct\ClientCell;
+use byteShard\Internal\Struct\ClientCellEvent;
 use byteShard\Internal\Struct\ClientCellProperties;
 use byteShard\Internal\Struct\ContentComponent;
 use byteShard\Internal\Tree\Attributes;
@@ -216,7 +217,6 @@ abstract class Tree extends CellContent implements TreeInterface
 
     /**
      * @return array
-     * @throws Exception
      */
     private function getCellEvents(): array
     {
@@ -226,7 +226,13 @@ abstract class Tree extends CellContent implements TreeInterface
         foreach ($this->getEvents() as $event) {
             $this->cell->registerContentEvent($event);
         }
-        return $this->getParentEventsForClient();
+        $result = [];
+        foreach ($this->getParentEventsForClient() as $eventName => $events) {
+            foreach ($events as $handler) {
+                $result[] = new ClientCellEvent($eventName, $handler);
+            }
+        }
+        return $result;
     }
 
     /**
