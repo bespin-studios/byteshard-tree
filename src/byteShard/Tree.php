@@ -46,11 +46,15 @@ abstract class Tree extends CellContent implements TreeInterface
      * @throws Exception
      * @internal
      */
-    public function getCellContent(): ?ClientCell
+    public function getCellContent(bool $resetNonce = true): ?ClientCell
     {
-        $components = parent::getComponents();
-        $nonce      = $this->cell->getNonce();
+        parent::getCellContent($resetNonce);
         $this->defineCellContent();
+        if ($this->hasFallbackContent()) {
+            return $this->getFallbackContent()->getCellContent(false);
+        }
+        $components = parent::getComponents($resetNonce);
+        $nonce      = $this->cell->getNonce();
         $this->defineDataBinding();
         $this->queryData();
         $this->sortArray();
