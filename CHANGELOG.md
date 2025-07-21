@@ -1,3 +1,16 @@
+# [2.1.0](https://github.com/bespin-studios/byteshard-tree/compare/v2.0.2...v2.1.0) (2025-07-21)
+
+
+### Bug Fixes
+
+* use new unified component structure ([263f173](https://github.com/bespin-studios/byteshard-tree/commit/263f173f4d69be0613c19d92a421ab07095abbdb))
+
+
+### Features
+
+* tree now has fallback content ([cd45b62](https://github.com/bespin-studios/byteshard-tree/commit/cd45b6268b6c508e1dd93b880c4cbb55fbc81743))
+* tree now has fallback content ([21d7f19](https://github.com/bespin-studios/byteshard-tree/commit/21d7f19e3103c1358cff2b25060d5190e937f55f))
+
 ## [2.0.2](https://github.com/bespin-studios/byteshard-tree/compare/v2.0.1...v2.0.2) (2025-05-21)
 
 
