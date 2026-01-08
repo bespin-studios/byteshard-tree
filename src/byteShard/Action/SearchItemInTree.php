@@ -27,14 +27,20 @@ class SearchItemInTree extends Action
      */
     public function __construct(string $cell)
     {
-        parent::__construct();
         $this->cell = Cell::getContentClassName($cell, 'Tree', __METHOD__);
     }
 
     protected function runAction(): ActionResultInterface
     {
-        $id     = $this->getLegacyId();
-        $result = new CellActionResult('LCell');
-        return $result->addCellCommand([$this->cell], 'findTreeItem', $id['usrInput']);
+        $inputId     = $this->getActionInitDTO()->eventId;
+        $clientData  = $this->getClientData();
+        if (property_exists($clientData, $inputId)) {
+            $searchValue = $clientData->{$inputId};
+            if (!empty($searchValue)) {
+                $result      = new CellActionResult(Action\ActionTargetEnum::Cell);
+                return $result->addCellCommand([$this->cell], 'findTreeItem', $searchValue);
+            }
+        }
+        return new Action\ActionResult();
     }
 }

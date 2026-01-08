@@ -220,12 +220,6 @@ abstract class Tree extends CellContent implements TreeInterface
      */
     private function getCellEvents(): array
     {
-        //TODO: check if registerContentEvent can be called in CellContent::getParentEventsForClient
-        // make sure that all Cell types (Grid, Form etc) support this
-        // if yes, rename CellContent::getParentEventsForClient to CellContent::getCellEvents and remove this function where possible
-        foreach ($this->getEvents() as $event) {
-            $this->cell->registerContentEvent($event);
-        }
         $result = [];
         foreach ($this->getParentEventsForClient() as $eventName => $events) {
             foreach ($events as $handler) {
