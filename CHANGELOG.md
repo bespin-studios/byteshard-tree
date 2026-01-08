@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/bespin-studios/byteshard-tree/compare/v2.1.1...v2.2.0) (2026-01-08)
+
+
+### Bug Fixes
+
+* remove invalid method calls ([6d8abe1](https://github.com/bespin-studios/byteshard-tree/commit/6d8abe129b294c59475771e9a97c0e8a1a629de3))
+
+
+### Features
+
+* implement new action layout ([13aae0e](https://github.com/bespin-studios/byteshard-tree/commit/13aae0e7696e34eab333caf37022d61801cb8202))
+
 ## [2.1.1](https://github.com/bespin-studios/byteshard-tree/compare/v2.1.0...v2.1.1) (2025-07-21)
 
 
