@@ -22,13 +22,11 @@ abstract class ModifyTree extends Action
      */
     public function __construct(string ...$cells)
     {
-        parent::__construct();
         $this->cells = array_map(function ($cell) {
             if (!Cell::isTreeContent($cell)) {
                 Debug::error(__METHOD__.' Action can only be used in Tree');
             }
             return Cell::getContentCellName($cell);
         }, array_unique($cells));
-        $this->addUniqueID($this->cells);
     }
 }
