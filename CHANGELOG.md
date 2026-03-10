@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/bespin-studios/byteshard-tree/compare/v2.2.0...v2.2.1) (2026-03-10)
+
+
+### Bug Fixes
+
+* keep session open needed for tabbar in cell ([168a7d8](https://github.com/bespin-studios/byteshard-tree/commit/168a7d84d6b8f953dc5233bfbee6d36a4077698b))
+
 # [2.2.0](https://github.com/bespin-studios/byteshard-tree/compare/v2.1.1...v2.2.0) (2026-01-08)
 
 
