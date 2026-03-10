@@ -47,7 +47,7 @@ abstract class Tree extends CellContent implements TreeInterface
      * @throws Exception
      * @internal
      */
-    public function getCellContent(bool $resetNonce = true): ?ClientCell
+    public function getCellContent(bool $resetNonce = true, bool $keepSessionOpen = false): ?ClientCell
     {
         parent::getCellContent($resetNonce);
         $this->defineCellContent();
